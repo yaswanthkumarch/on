@@ -1,0 +1,124 @@
+Workflow:
+
+Candidate selects "Frontend Developer" and inputs skills ["React", "CSS"].
+Compare inputs vs ROLE_REQUIREMENTS["Frontend Developer"].
+Calculate Score: (Matching / Total) * 100.
+Save aiMatchScore to the application document in Firestore.
+6. ROLE-BASED FEATURES
+A. GLOBAL
+Dark/Light Mode: Toggle in Header. Persist to users collection.
+Real-time: Use onSnapshot for all application lists so updates are instant.
+B. CANDIDATE PORTAL
+Dashboard: List of my applications with Status badges.
+Profile: Edit info + Upload Resume (Firebase Storage).
+Apply (The Generic Flow):
+Form fields: Role (Dropdown), Years, Salary.
+Skills Input: A text input that accepts "Enter" to add tags to a list (visual pills).
+On Submit: Trigger Mock AI Score -> Save to Firestore.
+C. HR EXECUTIVE PORTAL
+Dashboard:
+List view of all applications.
+Display AI Match Score (Green for >80%, Yellow 50-80%, Red <50%).
+Filter by Role.
+Application Details:
+View Resume.
+Private Notes: Text area to write notes that only HRs see (stored in hrNotes).
+Interview Flow:
+"Select Slot": Choose from candidate's available slots.
+"Add Link": Input Google Meet/Zoom.
+"Complete": Enter Feedback, Select Template (Ensure the default "Sophyra Clearance" is pre-selected), Generate PDF.
+D. ADMIN PORTAL
+Analytics (Recharts):
+Bar Chart: Applications by Role.
+Pie Chart: Application Status distribution.
+Line Chart: Applications over time (created dates).
+Certificate Designer:
+UI to customize Title, Description, Signee, Border Color, Font, Background.
+Live Preview.
+User Management: List of all users.
+7. CERTIFICATE GENERATION
+Use html2canvas to render the Certificate DOM element (styled with the template's settings) to an image.
+Use jspdf to put that image in a PDF and save it.
+Content: Candidate Name, Template Description (replacing [Name]), Title, Signee, Signee Title.
+8. UI/UX REQUIREMENTS
+Layout: Sidebar for navigation, Header for profile/theme.
+Animations: Use <AnimatePresence> from Framer Motion for page transitions.
+Responsive: Mobile-friendly.
+Feedback: Use toast.success and toast.error for all actions.
+9. EXECUTION PLAN
+Setup React Vite, Tailwind, and Firebase Config.
+Create Auth Context and Firestore Context.
+Implement DB Seeding: Write a function to check/add the default "Sophyra Clearance" template on load.
+Implement Login/Register & Role-based routing.
+Build Candidate: Profile + Skills Input + Apply Form + AI Logic.
+Build HR: Dashboard + Private Notes + Interview Slots.
+Build Admin: Recharts Dashboard + Template Editor (with Description field).
+Implement Certificate PDF generation logic (parsing Description text).
+Add Dark Mode & Framer Motion polish.
+Generate the complete file structure and component code.
+
+and by default templet is swith contenet is CERTIFICATE OF CLEARANCE
+This letter is presented to
+as attended the Sophyra Interview Process, a human-led interview experience designed
+to build confidence, communication skills, and real-world interview exposure.
+Enhanced by AI for consistency and unbiased evaluation.
+Confidence, powered by AI.
+BEST FOR STUDENTS
+Uppathi Saisreekar
+FOUNDER & CEO, SOPHYRA
+
+
+Plan
+Read existing project files and install dependencies
+Set up Firebase config, contexts (Auth, Theme), and services
+Build layout components (Sidebar, Header, Layout, ProtectedRoute)
+Build Auth pages (Login, Register) with role selection
+Build Candidate portal (Dashboard, Profile, Apply, Skills Input)
+Build HR portal (Dashboard, Application Details, Interview Flow)
+Build Admin portal (Analytics, Certificate Designer, User Management)
+Implement Certificate generation (html2canvas + jspdf)
+Set up routing, CSS, Tailwind config, and run build
+Plan completed
+Open details
+Build succeeded. Here's what was built:
+
+Sophyra - AI-Powered HR Recruitment OS is now complete with the following features:
+
+Authentication & Roles
+
+Email/password login and registration with role selection (Candidate, HR, Admin)
+Role-based routing and access control
+Candidate Portal
+
+Dashboard showing all submitted applications with status badges and AI match scores
+Profile editor with skills input (tag-style pills) and resume upload to Firebase Storage
+Application form with role dropdown, experience, salary, skills, and availability slots
+AI scoring runs automatically on submission, comparing skills against role requirements
+HR Executive Portal
+
+Dashboard listing all applications with search, role filtering, and color-coded AI scores (green >80%, yellow 50-80%, red <50%)
+Detailed application view with candidate info and resume link
+Private notes (only visible to HR)
+Interview scheduling: select from candidate's available slots and add a meeting link
+Interview completion: enter feedback, select certificate template (Sophyra Clearance pre-selected), and generate a PDF certificate
+Admin Portal
+
+Analytics dashboard with three Recharts visualizations (applications by role, status distribution, applications over time)
+Certificate designer with live preview, customizable title/description/signee/border/font/background
+User management with search and role-based cards
+Cross-cutting
+
+Dark/light mode toggle persisted per user
+Framer Motion page transitions
+Toast notifications for all actions
+Real-time Firestore listeners for instant updates
+Default "Sophyra Clearance" template auto-seeded on startup
+Certificate PDF generation via html2canvas + jsPDF
+To get started, you need to add your Firebase project credentials to the .env file:
+
+VITE_FIREBASE_API_KEY
+VITE_FIREBASE_AUTH_DOMAIN
+VITE_FIREBASE_PROJECT_ID
+VITE_FIREBASE_STORAGE_BUCKET
+VITE_FIREBASE_MESSAGING_SENDER_ID
+VITE_FIREBASE_APP_ID
